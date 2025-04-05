@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TTE Web App - HFrEF Demo</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="app">
+        <aside class="sidebar">
+            <h2>Patient Info</h2>
+            <p>Age: 67</p>
+            <p>Symptoms: SOB, orthopnea</p>
+        </aside>
+        <main class="main-panel">
+            <header>
+                <h1>HFrEF Case</h1>
+            </header>
+            <section class="case-details">
+                <p><strong>Echo Summary:</strong> Severely reduced LVEF, globally hypokinetic LV.</p>
+            </section>
+            <section class="questions">
+                <h3>Question 1</h3>
+                <p>What is the most likely diagnosis based on this echo?</p>
+                <input type="text" placeholder="Type your answer here..." />
+                <h3>Confidence</h3>
+                <input type="range" min="1" max="5" />
+            </section>
+            <section class="ai-chat">
+                <h3>AI Chat Panel</h3>
+                <p><em>Ask a question about this case...</em></p>
+                <textarea rows="3"></textarea>
+                <button>Submit</button>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

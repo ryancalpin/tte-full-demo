@@ -1,0 +1,35 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+}
+#app {
+    display: flex;
+    width: 100%;
+}
+.sidebar {
+    width: 250px;
+    background: #e9f0f8;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+.main-panel {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+header h1 {
+    margin-top: 0;
+}
+section {
+    margin-bottom: 20px;
+}
+.questions input[type="text"],
+.ai-chat textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
