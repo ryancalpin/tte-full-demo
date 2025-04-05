@@ -33,3 +33,21 @@ section {
     padding: 8px;
     margin-top: 5px;
 }
+.ai-panel {
+  width: 300px;
+  background: #fdf6f6;
+  border-left: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ai-panel textarea {
+  width: 100%;
+  padding: 8px;
+}
+.ai-panel button {
+  align-self: flex-end;
+  padding: 6px 12px;
+}
