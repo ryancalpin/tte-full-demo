@@ -51,3 +51,11 @@ section {
   align-self: flex-end;
   padding: 6px 12px;
 }
+
+.ai-response {
+  background: #eef1f7;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
