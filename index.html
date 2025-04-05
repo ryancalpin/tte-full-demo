@@ -1,65 +1,83 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TTE Web App - HFrEF Demo</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <!-- Ensure proper scaling on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- SEO: Provide a description for search engines -->
+  <meta name="description" content="Demo of a TTE web app for an HFrEF case with patient info and interactive AI chat." />
+  <title>TTE Web App - HFrEF Demo</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-   <div id="app">
-  <aside class="sidebar">
-    <h2>Patient Info</h2>
-    <p>Age: 67</p>
-    <p>Symptoms: SOB, orthopnea</p>
-  </aside>
+  <div id="app">
+    <!-- Sidebar with patient information -->
+    <aside class="sidebar">
+      <h2>Patient Info</h2>
+      <ul>
+        <li>Age: 67</li>
+        <li>Symptoms: SOB, orthopnea</li>
+      </ul>
+    </aside>
 
-  <main class="main-panel">
-    <header>
-      <h1>HFrEF Case</h1>
-    </header>
-    <section class="case-details">
-      <p><strong>Echo Summary:</strong> Severely reduced LVEF, globally hypokinetic LV.</p>
-    </section>
-    <section class="questions">
-      <h3>Question 1</h3>
-      <p>What is the most likely diagnosis based on this echo?</p>
-      <input type="text" placeholder="Type your answer here..." />
-      <h3>Confidence</h3>
-      <input type="range" min="1" max="5" />
-    </section>
-  </main>
+    <!-- Main panel containing case details and questions -->
+    <main class="main-panel">
+      <header>
+        <h1>HFrEF Case</h1>
+      </header>
+      
+      <section class="case-details">
+        <p><strong>Echo Summary:</strong> Severely reduced LVEF, globally hypokinetic LV.</p>
+      </section>
+      
+      <section class="questions">
+        <h3>Question 1</h3>
+        <p>What is the most likely diagnosis based on this echo?</p>
+        <!-- Accessible label (visually hidden) for text input -->
+        <label for="diagnosis-input" class="visually-hidden">Enter your answer:</label>
+        <input id="diagnosis-input" type="text" placeholder="Type your answer here..." />
+        
+        <h3>Confidence</h3>
+        <!-- Accessible label for range input -->
+        <label for="confidence-range" class="visually-hidden">Select your confidence level (1-5):</label>
+        <input id="confidence-range" type="range" min="1" max="5" />
+      </section>
+    </main>
 
-  <aside class="ai-panel">
-    <h3>AI Chat Panel</h3>
-    <p><em>Ask a question about this case...</em></p>
-    <textarea id="ai-input" rows="4" placeholder="Ask a question..."></textarea>
-    <button onclick="mockAIResponse()">Submit</button>
-    <div id="ai-response" class="ai-response"></div>  </aside>
-</div>
-<script>
-  function mockAIResponse() {
-    const input = document.getElementById('ai-input').value.toLowerCase();
-    const responseBox = document.getElementById('ai-response');
-    responseBox.innerHTML = "<em>Thinking...</em>";
+    <!-- AI Chat Panel with live region for dynamic responses -->
+    <aside class="ai-panel">
+      <h3>AI Chat Panel</h3>
+      <p><em>Ask a question about this case...</em></p>
+      <!-- Accessible label for textarea -->
+      <label for="ai-input" class="visually-hidden">Your question:</label>
+      <textarea id="ai-input" rows="4" placeholder="Ask a question..."></textarea>
+      <button id="submit-button" onclick="mockAIResponse()">Submit</button>
+      <!-- ARIA live region to announce dynamic updates -->
+      <div id="ai-response" class="ai-response" aria-live="polite"></div>
+    </aside>
+  </div>
 
-    setTimeout(() => {
-      let response;
+  <!-- Inline JavaScript: Consider moving to an external file (script.js) for scalability -->
+  <script>
+    function mockAIResponse() {
+      const input = document.getElementById('ai-input').value.toLowerCase();
+      const responseBox = document.getElementById('ai-response');
+      responseBox.innerHTML = "<em>Thinking...</em>";
 
-      if (input.includes("ef") || input.includes("ejection fraction")) {
-        response = "The ejection fraction appears severely reduced, consistent with HFrEF.";
-      } else if (input.includes("diagnosis")) {
-        response = "This echo is most consistent with systolic heart failure, or HFrEF.";
-      } else if (input.includes("next step") || input.includes("management")) {
-        response = "Consider guideline-directed medical therapy (GDMT), including beta blockers and ACEi/ARNI.";
-      } else {
-        response = "That’s a great question! Further echo interpretation would help clarify.";
-      }
-
-      responseBox.innerText = response;
-    }, 1200); // 1.2 second delay to simulate "thinking"
-  }
-</script>
+      setTimeout(() => {
+        let response;
+        if (input.includes("ef") || input.includes("ejection fraction")) {
+          response = "The ejection fraction appears severely reduced, consistent with HFrEF.";
+        } else if (input.includes("diagnosis")) {
+          response = "This echo is most consistent with systolic heart failure, or HFrEF.";
+        } else if (input.includes("next step") || input.includes("management")) {
+          response = "Consider guideline-directed medical therapy (GDMT), including beta blockers and ACEi/ARNI.";
+        } else {
+          response = "That’s a great question! Further echo interpretation would help clarify.";
+        }
+        responseBox.innerText = response;
+      }, 1200);
+    }
+  </script>
 </body>
 </html>
