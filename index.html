@@ -34,9 +34,32 @@
   <aside class="ai-panel">
     <h3>AI Chat Panel</h3>
     <p><em>Ask a question about this case...</em></p>
-    <textarea rows="4"></textarea>
-    <button>Submit</button>
-  </aside>
+    <textarea id="ai-input" rows="4" placeholder="Ask a question..."></textarea>
+    <button onclick="mockAIResponse()">Submit</button>
+    <div id="ai-response" class="ai-response"></div>  </aside>
 </div>
+<script>
+  function mockAIResponse() {
+    const input = document.getElementById('ai-input').value.toLowerCase();
+    const responseBox = document.getElementById('ai-response');
+    responseBox.innerHTML = "<em>Thinking...</em>";
+
+    setTimeout(() => {
+      let response;
+
+      if (input.includes("ef") || input.includes("ejection fraction")) {
+        response = "The ejection fraction appears severely reduced, consistent with HFrEF.";
+      } else if (input.includes("diagnosis")) {
+        response = "This echo is most consistent with systolic heart failure, or HFrEF.";
+      } else if (input.includes("next step") || input.includes("management")) {
+        response = "Consider guideline-directed medical therapy (GDMT), including beta blockers and ACEi/ARNI.";
+      } else {
+        response = "That’s a great question! Further echo interpretation would help clarify.";
+      }
+
+      responseBox.innerText = response;
+    }, 1200); // 1.2 second delay to simulate "thinking"
+  }
+</script>
 </body>
 </html>
